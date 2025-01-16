@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebRTC Conditional Screen Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #username-section {
+      margin: 10px 0;
+    }
+
+    #display-username {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #555;
+    }
+
+    #video-container {
+      display: none; /* Initially hidden */
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    video {
+      width: 300px;
+      height: 200px;
+      background-color: black;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #connectButton {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #disconnectButton {
+      background-color: #f44336;
+      color: white;
+    }
+
+    #muteButton {
+      background-color: #2196f3;
+      color: white;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>WebRTC Conditional Video Display</h1>
+  
+  <!-- Username Section -->
+  <div id="username-section">
+    <label for="username">Enter your username:</label>
+    <input type="text" id="username" placeholder="Username" required>
+    <br><br>
+  </div>
+  <h2 id="display-username" style="display: none;"></h2>
+  
+  <!-- Video Section -->
+  <div id="video-container">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
+  
+  <!-- Control Buttons -->
+  <button id="connectButton" disabled>Connect</button>
+  <button id="disconnectButton" disabled>Disconnect</button>
+  <button id="muteButton" disabled>Mute</button>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
